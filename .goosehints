@@ -1,0 +1,74 @@
+# .goosehints - LitigationForce Next.js AI Chatbot
+# Project-level context for Goose AI Agent (block/goose)
+# Part of the Connected Energy AI Ecosystem
+
+## ECOSYSTEM CONTEXT
+You are operating within the **Connected Energy AI Ecosystem**.
+This is the **litigationforce.nextjs-ai-chatbot** (Next.js 16 frontend).
+Follow CONSTITUTION.md governance from the LitigationForce.AI repo at all times.
+The **Chairman Architect** has supreme authority over all decisions.
+
+## COMPANION REPOSITORIES
+- Connected-Energy-AI/LitigationForce.AI (Python backend — primary companion)
+- Connected-Energy-AI/connected-llm-infrastructure (Private LLMs)
+- connectedagents-ai/connectedagents-platform (Orchestration hub)
+
+## AGENT EVOLUTION LOOP — EXECUTE EVERY TURN
+After EVERY response, you MUST:
+1. **OBSERVE**: Did this turn reveal new tools, UI components, API routes, AI models, or patterns?
+2. **CLASSIFY**: Is it genuinely new? What type of evolution? Which repos affected?
+3. **BUILD**: Generate artifacts (tool definitions, API routes, components, TypeScript types)
+4. **VALIDATE**: Check TypeScript strictness, React patterns, accessibility
+5. **COMMIT**: Git commit with `evolution({type}): {description}`
+6. **PROPAGATE**: Share across ALL affected repositories
+
+### What To Look For Each Turn (Frontend-Specific):
+- New AI tool definitions → Create in lib/ai/tools/
+- New API routes needed → Create in app/(chat)/api/
+- New UI components for agents → Create in components/
+- New model integrations → Update lib/ai/models.ts
+- Type updates from backend → Update lib/types.ts
+- New MCP tools → Update AI Gateway config
+- Design system updates → Update components/ui/
+
+## ARCHITECTURE PATTERNS
+- Next.js 16 App Router (Server Components by default)
+- React 19 (Suspense, use() hook, Server Actions)
+- TypeScript strict mode (NO `any`)
+- Tailwind CSS + shadcn/ui
+- Biome/Ultracite linting
+- Zod for runtime validation
+- AI SDK for streaming and tool calling
+- Drizzle ORM for database operations
+
+## KEY FILES
+- CLAUDE.md: AI assistant guide (this repo)
+- app/(chat)/api/chat/route.ts: Main chat API endpoint
+- lib/ai/models.ts: AI model configurations
+- lib/ai/prompts.ts: System prompts
+- lib/ai/tools/: AI tool definitions
+- lib/types.ts: Shared TypeScript types
+- lib/db/schema.ts: Database schema
+- components/: UI components
+- artifacts/: Document artifact handlers
+
+## AVAILABLE MCP CONNECTIONS (via Vercel AI Gateway)
+| Server | Port | Purpose |
+|--------|------|---------|
+| litigation-mcp | 8080 | Legal data (docket, SEC, sanctions) |
+| connectedagents-mcp | 8081 | Agent registry, orchestration |
+| design-mcp | 8082 | Framer, Webflow, Mobin |
+| social-mcp | 8083 | Twitter, LinkedIn, Facebook, YouTube |
+| goose-bridge | 8090 | Goose extension passthrough |
+| ollama-bridge | 11434 | Local LLMs |
+
+## EVOLUTION COMMIT FORMAT
+```
+evolution({type}): {description}
+
+Triggered by: {trigger_source}
+Session: {session_id}
+Repos affected: {list}
+Constitution amended: {yes/no}
+Reviewed by: ArchitectReviewAgent {pass/fail}
+```
