@@ -1,0 +1,83 @@
+# Cursor Rules - Connected Energy.AI / LitigationForce.AI
+# Auto-generated from CONSTITUTION.md - Do not edit directly
+# To update, modify CONSTITUTION.md and run /sync-constitution
+# Last synced: 2026-02-28
+
+## Binding Rules
+Read and obey CONSTITUTION.md as the single source of truth for all AI behavior.
+Read docs/AGENTS.md for agent definitions and communication patterns.
+Read docs/PLATFORM_ARCHITECTURE.md for the dual-deployment architecture.
+
+## Project Context
+This is LitigationForce.AI - a Social Agent Orchestration System for litigation intelligence.
+Built on Python 3.11+, Pydantic v2, Neo4j, and Anthropic Claude API.
+
+## Code Style
+- Formatter: Black (line-length 100)
+- Linter: Ruff (rules: E, F, I, N, W, UP)
+- Type checker: mypy strict (disallow_untyped_defs=true)
+- Docstrings: Google-style
+- Tests: pytest + pytest-asyncio (mode=auto)
+- Async everything for I/O
+- Pydantic v2 models with Field constraints
+- structlog for logging
+- tenacity for retry logic
+
+## Naming
+- Files: snake_case (claim_mapper_agent.py)
+- Classes: PascalCase (ClaimMapperAgent)
+- Functions: snake_case (map_claims_to_facts())
+- Constants: UPPER_SNAKE (MAX_RETRY_COUNT)
+- Enums: UPPER_SNAKE values (ClaimType.RICO_ENTERPRISE)
+
+## Architecture
+- Agent base: src/orchestration/base.py
+- Models: src/models/ (Pydantic v2)
+- MCP: src/mcp/ (connectors + policy enforcement)
+- Graph: src/graph/ (Neo4j async client)
+- Ontology: src/ontology/ (Veritas LegalTech)
+- Runtime: src/runtime/ (portable agent kernel)
+- Config: src/config/settings.py (Pydantic BaseSettings, @lru_cache singleton)
+
+## Safety
+- simulation_mode = True (NEVER change without approval)
+- block_filing_directives = True (NEVER change without approval)
+- All outputs are Simulation / Not Legal Advice
+
+## Proven Patterns (from CONSTITUTION.md Article VIII)
+- Use `X | None` not `Optional[X]`; `list[str]` not `List[str]` (Python 3.11)
+- `callable` cannot use `|` syntax — always use `Callable` from typing
+- Test data MUST respect Pydantic Field(max_length=N) constraints
+- Framework shells (CaseStateManager.create_framework) are empty — business logic must initialize
+- Intent parsers must account for articles: "create a budget" not just "create budget"
+- Commit after each logical unit: fix imports → fix tests → add features → memorialize
+
+## Infrastructure (see CONSTITUTION.md Article VII-A)
+- Docker: `docker-compose up` starts Neo4j + Redis + App + Worker
+- MCP: .mcp.json defines 7 servers (1 stdio for litigation tools, 6 HTTP for external)
+- GitHub: `gh auth login` required for PR/issue ops from terminal
+- Makefile: `make quality` (lint+test), `make docker-up`, `make setup`
+- All MCP connectors are simulation stubs until explicitly switched to live
+
+## Autonomous Control (CONSTITUTION.md Article IX)
+- AutonomousControlOrchestrator: src/orchestration/autonomous_control.py
+- Inventory → Health Check → Ingest → Configure → Sync → Capture
+- ConnectedAgentsBridge: Cross-repo learning loop
+
+## Design System (CONSTITUTION.md Article X)
+- Full spec: docs/DESIGN_SYSTEM.md
+- Tokens: docs/landing-page/prototype/css/tokens.css
+- Philosophy: Deloitte-grade institutional + modern legal tech
+- Dark mode default, light mode for reports/print
+- Fonts: Orbitron (display), Inter (body), JetBrains Mono (code), Source Serif Pro (legal)
+- No hardcoded colors — use CSS custom properties / design tokens
+
+## Key Files
+- CONSTITUTION.md: Universal rules (binding)
+- CLAUDE.md: Claude Code specific (AI rulebook)
+- docs/AGENTS.md: Agent & worker definitions
+- docs/PLATFORM_ARCHITECTURE.md: Dual deployment architecture
+- docs/DESIGN_SYSTEM.md: Complete design system specification
+- .mcp.json: MCP server connections
+- docker-compose.yml: Service definitions
+- Makefile: One-shot terminal commands
