@@ -1,0 +1,25 @@
+# Windsurf Rules - Connected Energy.AI / LitigationForce.AI
+# Auto-generated from CONSTITUTION.md - Do not edit directly
+# Last synced: 2026-02-28
+
+Read and obey CONSTITUTION.md as the single source of truth.
+Read docs/AGENTS.md for agent definitions. Read docs/PLATFORM_ARCHITECTURE.md for architecture.
+
+Project: LitigationForce.AI - Social Agent Orchestration for litigation intelligence.
+Stack: Python 3.11+, Pydantic v2, Neo4j, Anthropic Claude API.
+
+Code: Black (100), Ruff (E,F,I,N,W,UP), mypy strict, Google docstrings, pytest-asyncio.
+Async everything. Pydantic v2 models. structlog logging. tenacity retry.
+
+Architecture: Agents in src/agents/, models in src/models/, MCP in src/mcp/,
+graph in src/graph/, ontology in src/ontology/, runtime in src/runtime/.
+
+Safety: simulation_mode=True, block_filing_directives=True. NEVER change.
+All outputs are Simulation / Not Legal Advice.
+
+Infrastructure: docker-compose up → Neo4j + Redis + App + Worker. MCP via .mcp.json.
+gh auth login required for terminal PR/issue ops. make quality for pre-commit checks.
+
+Patterns: Use X | None not Optional[X]. Use Callable not callable for type hints.
+Test data must respect Field(max_length=N). Framework shells are empty — initialize before use.
+See CONSTITUTION.md Articles VII-A and VIII for infrastructure and agent knowledge.
