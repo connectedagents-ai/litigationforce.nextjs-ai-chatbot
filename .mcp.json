@@ -1,0 +1,135 @@
+{
+  "mcpServers": {
+    "connected-energy": {
+      "command": "python",
+      "args": ["-m", "src.mcp.stdio_server"],
+      "env": {
+        "NEO4J_URI": "${NEO4J_URI:-bolt://localhost:7687}",
+        "NEO4J_USER": "${NEO4J_USER:-neo4j}",
+        "NEO4J_PASSWORD": "${NEO4J_PASSWORD}",
+        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+        "REDIS_URL": "${REDIS_URL:-redis://localhost:6379/0}"
+      },
+      "note": "Connected Energy.AI Master Platform: litigation, social intelligence, graph, all MCP connectors"
+    },
+
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "note": "GitHub: PRs, issues, code, repo management across Connected-Energy-AI + connectedagents-ai"
+    },
+
+    "figma": {
+      "command": "npx",
+      "args": ["-y", "@figma/mcp"],
+      "env": {
+        "FIGMA_API_KEY": "${FIGMA_API_KEY}"
+      },
+      "note": "Figma: Design files, components, dev mode handoff, design tokens → code"
+    },
+
+    "vercel": {
+      "command": "npx",
+      "args": ["-y", "@vercel/mcp-adapter"],
+      "env": {
+        "VERCEL_TOKEN": "${VERCEL_TOKEN}"
+      },
+      "note": "Vercel + v0: Deploy Next.js apps, generate UI with v0.dev, manage edge functions"
+    },
+
+    "huggingface": {
+      "command": "npx",
+      "args": ["-y", "@huggingface/mcp-client"],
+      "env": {
+        "HF_TOKEN": "${HF_TOKEN}"
+      },
+      "note": "Hugging Face: Run inference, load models, Spaces, Datasets, fine-tuning"
+    },
+
+    "replicate": {
+      "command": "npx",
+      "args": ["-y", "replicate-mcp"],
+      "env": {
+        "REPLICATE_API_TOKEN": "${REPLICATE_API_TOKEN}"
+      },
+      "note": "Replicate: Run ML models (image gen, video, audio, LLMs) via API"
+    },
+
+    "replit": {
+      "command": "npx",
+      "args": ["-y", "@replit/mcp"],
+      "env": {
+        "REPLIT_TOKEN": "${REPLIT_TOKEN}"
+      },
+      "note": "Replit: Create/run/deploy Node.js, Python, web apps in cloud environment"
+    },
+
+    "browserbase": {
+      "command": "npx",
+      "args": ["-y", "@browserbasehq/mcp"],
+      "env": {
+        "BROWSERBASE_API_KEY": "${BROWSERBASE_API_KEY}",
+        "BROWSERBASE_PROJECT_ID": "${BROWSERBASE_PROJECT_ID}"
+      },
+      "note": "Browserbase: Cloud browser automation — scraping, testing, web agents (HyperAgent backend)"
+    },
+
+    "render": {
+      "command": "npx",
+      "args": ["-y", "render-mcp-server"],
+      "env": {
+        "RENDER_API_KEY": "${RENDER_API_KEY}"
+      },
+      "note": "Render: Deploy web services, static sites, cron jobs, databases"
+    },
+
+    "supabase": {
+      "command": "npx",
+      "args": ["-y", "supabase-mcp-server"],
+      "env": {
+        "SUPABASE_URL": "${SUPABASE_URL}",
+        "SUPABASE_SERVICE_KEY": "${SUPABASE_SERVICE_KEY}"
+      },
+      "note": "Supabase: Database, auth, realtime, storage for web apps"
+    },
+
+    "notion": {
+      "type": "http",
+      "url": "https://mcp.notion.com/mcp",
+      "note": "Notion: Documentation, knowledge base, case files, project management"
+    },
+
+    "slack": {
+      "type": "http",
+      "url": "https://mcp.slack.com/mcp",
+      "note": "Slack: Team messages, channels, notifications, workflow alerts"
+    },
+
+    "linear": {
+      "type": "http",
+      "url": "https://mcp.linear.app/mcp",
+      "note": "Linear: Issue tracking, sprints, project management"
+    },
+
+    "sentry": {
+      "type": "http",
+      "url": "https://mcp.sentry.dev/mcp",
+      "note": "Sentry: Error monitoring, performance, deployment tracking"
+    },
+
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+      },
+      "note": "Firecrawl: Scrape/crawl any URL → clean markdown. Powers the design ingestion pipeline."
+    },
+
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp",
+      "note": "Context7: Live library docs for AI — Next.js, React, Tailwind, Supabase, etc."
+    }
+  }
+}
